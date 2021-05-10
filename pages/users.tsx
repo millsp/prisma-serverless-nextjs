@@ -1,9 +1,10 @@
 import {PrismaClient} from '@prisma/client';
 import type {GetServerSideProps} from 'next';
 
+const prisma = new PrismaClient();
+
 export const getServerSideProps: GetServerSideProps = async (context) => {
     try {
-        const prisma = new PrismaClient();
         const data = await prisma.user.findMany();
 
         return {
