@@ -5,19 +5,18 @@ yourProjectName:
   inputs:
     minifyHandlers: true
     build:
-      postBuildCommands: [
-        'PDIR=node_modules/.prisma/client/;
-         LDIR=.serverless_nextjs/api-lambda/;
-         if [ "$(ls -A $LDIR)" ]; then
-          mkdir -p $LDIR$PDIR;
-          cp "$PDIR"query-engine-rhel-* $LDIR$PDIR;
-          cp "$PDIR"schema.prisma $LDIR$PDIR;
-         fi;',
-        'PDIR=node_modules/.prisma/client/;
-         LDIR=.serverless_nextjs/default-lambda/;
-         if [ "$(ls -A $LDIR)" ]; then
-          mkdir -p $LDIR$PDIR;
-          cp "$PDIR"query-engine-rhel-* $LDIR$PDIR;
-          cp "$PDIR"schema.prisma $LDIR$PDIR;
-         fi;'
-      ]
+      postBuildCommands:
+        - PDIR=node_modules/.prisma/client/;
+          LDIR=.serverless_nextjs/api-lambda/;
+          if [ "$(ls -A $LDIR)" ]; then
+            mkdir -p $LDIR$PDIR;
+            cp "$PDIR"query-engine-rhel-* $LDIR$PDIR;
+            cp "$PDIR"schema.prisma $LDIR$PDIR;
+          fi;
+        - PDIR=node_modules/.prisma/client/;
+          LDIR=.serverless_nextjs/default-lambda/;
+            if [ "$(ls -A $LDIR)" ]; then
+              mkdir -p $LDIR$PDIR;
+              cp "$PDIR"query-engine-rhel-* $LDIR$PDIR;
+              cp "$PDIR"schema.prisma $LDIR$PDIR;
+          fi;
