@@ -9,9 +9,9 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
         const prisma = new PrismaClient();
         const data = await prisma.user.findMany();
 
-        res.status(200).json({v: 42, data});
+        res.status(200).json({data});
     } catch (err) {
-        res.status(500).json({v: 42, data: JSON.stringify(err, Object.getOwnPropertyNames(err))});
+        res.status(500).json({data: JSON.stringify(err, Object.getOwnPropertyNames(err))});
     }
 };
 
